@@ -455,3 +455,424 @@ body {
         height: 250px;
     }
 }
+/* =====================================================
+   ABOUT + SKILLS + EDUCATION
+   ===================================================== */
+
+
+/* COMMON SECTION */
+
+.about-section,
+.skills-section,
+.education-section {
+    padding: 100px 10%;
+    background: #ffffff;
+}
+
+
+/* SECTION HEADING */
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-heading p {
+    color: #6c4df6;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    margin-bottom: 10px;
+}
+
+.section-heading h2 {
+    font-size: 42px;
+    font-weight: 800;
+    color: #1e1d2b;
+}
+
+.section-heading h2 span {
+    color: #6c4df6;
+}
+
+.heading-line {
+    width: 50px;
+    height: 4px;
+    border-radius: 10px;
+    background: #6c4df6;
+    margin: 15px auto 0;
+}
+
+
+/* =====================================================
+   ABOUT
+   ===================================================== */
+
+.about-section {
+    background: #faf9ff;
+}
+
+.about-container {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+
+/* ABOUT CARD */
+
+.about-card {
+    background: white;
+    padding: 40px;
+    border-radius: 18px;
+    border: 1px solid #e8e3ff;
+    box-shadow: 0 15px 40px rgba(108, 77, 246, 0.08);
+    transition: 0.3s;
+}
+
+.about-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 45px rgba(108, 77, 246, 0.14);
+}
+
+.about-icon {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    background: #eeeaff;
+    font-size: 28px;
+    margin-bottom: 22px;
+}
+
+.about-card h3 {
+    font-size: 27px;
+    margin-bottom: 18px;
+}
+
+.about-card p {
+    color: #686778;
+    font-size: 14px;
+    line-height: 1.9;
+    margin-bottom: 15px;
+}
+
+
+/* ABOUT DETAILS */
+
+.about-details {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.detail-box {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 22px;
+    background: white;
+    border-radius: 14px;
+    border: 1px solid #e8e3ff;
+    transition: 0.3s;
+}
+
+.detail-box:hover {
+    transform: translateX(7px);
+    border-color: #6c4df6;
+}
+
+.detail-box > span {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #eeeaff;
+    border-radius: 12px;
+    font-size: 22px;
+}
+
+.detail-box h4 {
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+
+.detail-box p {
+    color: #777687;
+    font-size: 12px;
+}
+
+
+/* =====================================================
+   SKILLS
+   ===================================================== */
+
+.skills-section {
+    background: white;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.skill-card {
+    padding: 28px;
+    background: #faf9ff;
+    border: 1px solid #e7e2ff;
+    border-radius: 16px;
+    transition: 0.3s;
+}
+
+.skill-card:hover {
+    transform: translateY(-7px);
+    border-color: #6c4df6;
+    box-shadow: 0 15px 35px rgba(108, 77, 246, 0.12);
+}
+
+.skill-top {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin-bottom: 15px;
+}
+
+.skill-icon {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #eeeaff;
+    border-radius: 11px;
+    font-size: 21px;
+}
+
+.skill-top h3 {
+    font-size: 17px;
+}
+
+.skill-card > p {
+    color: #777687;
+    font-size: 12px;
+    line-height: 1.7;
+    min-height: 42px;
+    margin-bottom: 17px;
+}
+
+
+/* SKILL BAR */
+
+.skill-bar {
+    width: 100%;
+    height: 7px;
+    background: #e8e4f5;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.skill-progress {
+    height: 100%;
+    background: #6c4df6;
+    border-radius: 20px;
+}
+
+
+/* DIFFERENT SKILL LEVELS */
+
+.html-progress {
+    width: 90%;
+}
+
+.css-progress {
+    width: 85%;
+}
+
+.js-progress {
+    width: 75%;
+}
+
+.java-progress {
+    width: 80%;
+}
+
+.github-progress {
+    width: 75%;
+}
+
+.problem-progress {
+    width: 80%;
+}
+
+
+.skill-percent {
+    display: block;
+    text-align: right;
+    color: #6c4df6;
+    font-size: 11px;
+    font-weight: 700;
+    margin-top: 7px;
+}
+
+
+/* =====================================================
+   EDUCATION
+   ===================================================== */
+
+.education-section {
+    background: #faf9ff;
+}
+
+.education-timeline {
+    position: relative;
+    max-width: 850px;
+    margin: auto;
+}
+
+
+/* VERTICAL LINE */
+
+.education-timeline::before {
+    content: "";
+    position: absolute;
+    left: 24px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #dcd5ff;
+}
+
+
+/* EDUCATION ITEM */
+
+.education-item {
+    position: relative;
+    padding-left: 75px;
+    margin-bottom: 35px;
+}
+
+
+/* DOT */
+
+.education-dot {
+    position: absolute;
+    left: 15px;
+    top: 25px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #6c4df6;
+    border: 5px solid #eeeaff;
+    z-index: 2;
+}
+
+
+/* EDUCATION CARD */
+
+.education-card {
+    background: white;
+    padding: 28px 30px;
+    border-radius: 15px;
+    border: 1px solid #e5e0ff;
+    transition: 0.3s;
+}
+
+.education-card:hover {
+    transform: translateX(7px);
+    box-shadow: 0 15px 35px rgba(108, 77, 246, 0.1);
+}
+
+.education-year {
+    display: inline-block;
+    padding: 5px 12px;
+    background: #eeeaff;
+    color: #6c4df6;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.education-card h3 {
+    font-size: 19px;
+    margin-bottom: 5px;
+}
+
+.education-card h4 {
+    color: #6c4df6;
+    font-size: 13px;
+    margin-bottom: 12px;
+}
+
+.education-card p {
+    color: #777687;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+
+/* =====================================================
+   RESPONSIVE DESIGN
+   ===================================================== */
+
+@media (max-width: 900px) {
+
+    .about-section,
+    .skills-section,
+    .education-section {
+        padding: 80px 7%;
+    }
+
+    .about-container {
+        grid-template-columns: 1fr;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 550px) {
+
+    .about-section,
+    .skills-section,
+    .education-section {
+        padding: 70px 6%;
+    }
+
+    .section-heading h2 {
+        font-size: 32px;
+    }
+
+    .section-heading {
+        margin-bottom: 40px;
+    }
+
+    .about-card {
+        padding: 28px;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .education-item {
+        padding-left: 60px;
+    }
+
+    .education-timeline::before {
+        left: 19px;
+    }
+
+    .education-dot {
+        left: 10px;
+    }
+
+}
