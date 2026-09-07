@@ -62,3 +62,19 @@ navigationLinks.forEach(function (link) {
         navLinks.classList.remove("show");
     });
 });
+function openCertificate(title) {
+    document.getElementById("certificateTitle").textContent = title;
+    document.getElementById("certificateModal").classList.add("show");
+}
+
+function closeCertificate() {
+    document.getElementById("certificateModal").classList.remove("show");
+}
+
+window.onclick = function(event) {
+    const modal = document.getElementById("certificateModal");
+
+    if (event.target === modal) {
+        closeCertificate();
+    }
+};
