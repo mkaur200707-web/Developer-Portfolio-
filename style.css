@@ -1206,3 +1206,244 @@ body {
     background: #5538d4;
     transform: translateY(-2px);
 }
+/* =====================================================
+   CONTACT
+   ===================================================== */
+
+.contact-section {
+    padding: 100px 10%;
+    background: #ffffff;
+}
+
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 50px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.contact-info {
+    padding: 35px;
+    background: #faf9ff;
+    border: 1px solid #e7e2ff;
+    border-radius: 18px;
+}
+
+.contact-info h3 {
+    font-size: 27px;
+    margin-bottom: 15px;
+}
+
+.contact-info > p {
+    color: #777687;
+    font-size: 13px;
+    line-height: 1.8;
+    margin-bottom: 25px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.contact-item > span {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #eeeaff;
+    border-radius: 12px;
+    font-size: 20px;
+}
+
+.contact-item h4 {
+    font-size: 14px;
+    margin-bottom: 3px;
+}
+
+.contact-item p {
+    color: #777687;
+    font-size: 11px;
+}
+
+
+/* CONTACT FORM */
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #e1dcf5;
+    border-radius: 10px;
+    font-family: "Poppins", sans-serif;
+    font-size: 12px;
+    outline: none;
+    resize: vertical;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #6c4df6;
+}
+
+.contact-btn {
+    width: fit-content;
+    padding: 13px 25px;
+    border: none;
+    border-radius: 9px;
+    background: #6c4df6;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.contact-btn:hover {
+    background: #5538d4;
+    transform: translateY(-3px);
+}
+
+
+/* =====================================================
+   RESUME
+   ===================================================== */
+
+.resume-section {
+    padding: 100px 10%;
+    text-align: center;
+    background: #faf9ff;
+}
+
+.resume-container {
+    max-width: 700px;
+    margin: auto;
+}
+
+.resume-container p {
+    color: #777687;
+    font-size: 13px;
+    line-height: 1.8;
+    margin-bottom: 25px;
+}
+
+.resume-btn {
+    display: inline-block;
+    padding: 14px 25px;
+    background: #6c4df6;
+    color: white;
+    text-decoration: none;
+    border-radius: 9px;
+    font-size: 13px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.resume-btn:hover {
+    background: #5538d4;
+    transform: translateY(-3px);
+}
+
+
+/* =====================================================
+   FOOTER
+   ===================================================== */
+
+.footer {
+    padding: 35px 10%;
+    background: #1e1d2b;
+    color: white;
+}
+
+.footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.footer-logo {
+    font-size: 22px;
+    font-weight: 800;
+}
+
+.footer-logo span {
+    color: #6c4df6;
+}
+
+.footer-content p {
+    color: #aaa8b8;
+    font-size: 11px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-links a {
+    color: #aaa8b8;
+    text-decoration: none;
+    font-size: 11px;
+    transition: 0.3s;
+}
+
+.footer-links a:hover {
+    color: white;
+}
+
+
+/* =====================================================
+   CONTACT + RESUME + FOOTER RESPONSIVE
+   ===================================================== */
+
+@media (max-width: 900px) {
+
+    .contact-section,
+    .resume-section {
+        padding: 80px 7%;
+    }
+
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+}
+
+@media (max-width: 550px) {
+
+    .contact-section,
+    .resume-section {
+        padding: 70px 6%;
+    }
+
+    .contact-info {
+        padding: 25px;
+    }
+
+    .footer {
+        padding: 30px 6%;
+    }
+
+    .footer-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+}
