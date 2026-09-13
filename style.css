@@ -88,7 +88,7 @@ body {
     display: none;
     border: none;
     background: transparent;
-    color: #6c4df6;
+    color: white;
     font-size: 26px;
     cursor: pointer;
 }
@@ -363,7 +363,7 @@ body {
         padding: 25px;
         display: none;
         flex-direction: column;
-        background: white;
+        background: #6c4df6;
         box-shadow: 0 10px 20px rgba(50, 40, 100, 0.08);
     }
 
