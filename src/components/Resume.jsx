@@ -15,13 +15,15 @@ function Resume() {
           and experience? Download my resume below.
         </p>
 
-        <a
-          href="/Aanya_Sharma_Resume.pdf"
-          download
-          className="resume-btn"
-        >
-          Download Resume ↓
-        </a>
+        
+<a
+  href={`${import.meta.env.BASE_URL}Aanya_Sharma_Resume.pdf`}
+  download
+  className="resume-btn"
+>
+  Download Resume ↓
+</a>
+
       </div>
 
     </section>
