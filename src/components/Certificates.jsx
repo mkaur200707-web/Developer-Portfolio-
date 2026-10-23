@@ -1,5 +1,13 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import {
+  Globe,
+  Coffee,
+  Palette,
+  Award,
+  X,
+  ArrowUpRight
+} from 'lucide-react';
 
 function Certificates() {
   const [selectedCertificate, setSelectedCertificate] = useState(null);
@@ -7,82 +15,96 @@ function Certificates() {
   const certificates = [
     {
       title: 'Web Development',
-      icon: '🌐',
+      icon: Globe,
       description:
-        'Sample achievement certificate demonstrating knowledge of HTML, CSS and JavaScript.'
+        'Knowledge and practical experience in HTML, CSS and JavaScript.'
     },
     {
       title: 'Java Programming',
-      icon: '☕',
+      icon: Coffee,
       description:
-        'Sample achievement certificate demonstrating programming and object-oriented concepts in Java.'
+        'Programming fundamentals and object-oriented concepts using Java.'
     },
     {
       title: 'UI/UX Design',
-      icon: '🎨',
+      icon: Palette,
       description:
-        'Sample achievement certificate demonstrating basic user interface and user experience design skills.'
+        'Understanding of user interface design and user experience principles.'
     }
   ];
 
+  useEffect(() => {
+    if (!selectedCertificate) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    const handleEscape = (event) => {
+      if (event.key === 'Escape') {
+        setSelectedCertificate(null);
+      }
+    };
+
+    window.addEventListener('keydown', handleEscape);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener('keydown', handleEscape);
+    };
+  }, [selectedCertificate]);
+
   return (
     <>
-      <section className="certificates-section" id="certificates">
-
+      <section
+        className="certificates-section"
+        id="certificates"
+      >
         <div className="section-heading">
-          <p>MY ACHIEVEMENTS</p>
-          <h2>My <span>Certificates</span></h2>
+          <p>PROFESSIONAL DEVELOPMENT</p>
+          <h2>
+            My <span>Certificates</span>
+          </h2>
           <div className="heading-line"></div>
         </div>
 
         <div className="certificates-grid">
-          {certificates.map((certificate) => (
-            <div
-              className="certificate-card"
-              key={certificate.title}
-            >
-              <div className="certificate-top">
-                <span className="certificate-icon">
-                  {certificate.icon}
-                </span>
+          {certificates.map((certificate) => {
+            const Icon = certificate.icon;
 
-                <span className="sample-badge">
-                  SAMPLE
-                </span>
+            return (
+              <article
+                className="certificate-card"
+                key={certificate.title}
+              >
+                <div className="certificate-top">
+                  <span className="certificate-icon">
+                    <Icon size={24} strokeWidth={1.5} />
+                  </span>
+                </div>
+
+                <h3>{certificate.title}</h3>
+
+                <p>{certificate.description}</p>
 
                 <button
                   type="button"
                   className="view-certificate-btn"
                   onClick={() =>
-                    setSelectedCertificate(certificate.title)
+                    setSelectedCertificate(certificate)
                   }
                 >
-                  View Sample
+                  View Details
+                  <ArrowUpRight size={17} strokeWidth={1.5} />
                 </button>
-              </div>
-
-              <h3>{certificate.title}</h3>
-
-              <p>{certificate.description}</p>
-
-              <div className="certificate-footer">
-                <span>🏆 Aanya Sharma</span>
-                <span>2026</span>
-              </div>
-            </div>
-          ))}
+              </article>
+            );
+          })}
         </div>
-
-        <p className="certificate-note">
-          * Sample certificates for portfolio demonstration purposes.
-        </p>
-
       </section>
 
       {selectedCertificate && (
         <div
           className="certificate-modal show"
-          id="certificateModal"
           onClick={(event) => {
             if (event.target === event.currentTarget) {
               setSelectedCertificate(null);
@@ -95,52 +117,38 @@ function Certificates() {
             aria-modal="true"
             aria-labelledby="certificateTitle"
           >
-
             <button
               className="close-certificate"
               type="button"
-              aria-label="Close certificate"
+              aria-label="Close details"
               onClick={() => setSelectedCertificate(null)}
             >
-              &times;
+              <X size={22} />
             </button>
 
             <div className="certificate-design">
-
-              <div className="certificate-label">
-                SAMPLE / DEMO
-              </div>
+              <Award
+                className="certificate-award"
+                size={38}
+                strokeWidth={1.2}
+              />
 
               <p className="certificate-small-title">
-                CERTIFICATE OF ACHIEVEMENT
+                PROFESSIONAL DEVELOPMENT
               </p>
 
               <h2 id="certificateTitle">
-                {selectedCertificate}
+                {selectedCertificate.title}
               </h2>
 
-              <p>
-                This sample certificate is presented to
-              </p>
-
-              <h3>Aanya Sharma</h3>
-
-              <p>
-                for demonstrating learning and skills in
-                the selected field.
-              </p>
+              <p>{selectedCertificate.description}</p>
 
               <div className="certificate-divider"></div>
 
               <div className="certificate-bottom">
-                <span>Portfolio Demo</span>
-                <span>2026</span>
+                <span>Skills & Learning</span>
+                <span>Portfolio</span>
               </div>
-
-              <p className="demo-warning">
-                SAMPLE CERTIFICATE — NOT AN OFFICIAL CREDENTIAL
-              </p>
-
             </div>
           </div>
         </div>

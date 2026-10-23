@@ -1,16 +1,27 @@
 
+import {
+  UserRound,
+  Target,
+  Lightbulb,
+  TrendingUp
+} from 'lucide-react';
+
 function About() {
   return (
     <section className="about-section" id="about">
       <div className="section-heading">
         <p>GET TO KNOW ME</p>
-        <h2>About <span>Me</span></h2>
+        <h2>
+          About <span>Me</span>
+        </h2>
         <div className="heading-line"></div>
       </div>
 
       <div className="about-container">
         <div className="about-card">
-          <div className="about-icon">👩‍💻</div>
+          <div className="about-icon">
+            <UserRound size={24} strokeWidth={1.5} />
+          </div>
 
           <h3>Who Am I?</h3>
 
@@ -28,7 +39,10 @@ function About() {
 
         <div className="about-details">
           <div className="detail-box">
-            <span>🎯</span>
+            <span className="detail-icon">
+              <Target size={23} strokeWidth={1.5} />
+            </span>
+
             <div>
               <h4>My Goal</h4>
               <p>To become a skilled software developer.</p>
@@ -36,7 +50,10 @@ function About() {
           </div>
 
           <div className="detail-box">
-            <span>💡</span>
+            <span className="detail-icon">
+              <Lightbulb size={23} strokeWidth={1.5} />
+            </span>
+
             <div>
               <h4>My Interest</h4>
               <p>Web Development, Java &amp; UI Design.</p>
@@ -44,7 +61,10 @@ function About() {
           </div>
 
           <div className="detail-box">
-            <span>🚀</span>
+            <span className="detail-icon">
+              <TrendingUp size={23} strokeWidth={1.5} />
+            </span>
+
             <div>
               <h4>My Approach</h4>
               <p>Learn, build, improve and grow.</p>

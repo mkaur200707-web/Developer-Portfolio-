@@ -1,27 +1,27 @@
 
+import { Link } from 'react-router-dom';
+
 function Footer() {
   return (
     <footer className="footer">
-
       <div className="footer-content">
 
-        <div className="footer-logo">
+        <Link to="/" className="footer-logo">
           &lt;Dev<span>/&gt;</span>
-        </div>
+        </Link>
 
         <p>
           © 2026 Aanya Sharma. All rights reserved.
         </p>
 
-        <div className="footer-links">
-          <a href="#home">Home</a>
-          <a href="#about">About</a>
-          <a href="#projects">Projects</a>
-          <a href="#contact">Contact</a>
-        </div>
+        <nav className="footer-links" aria-label="Footer navigation">
+          <Link to="/">Home</Link>
+          <Link to="/about">About</Link>
+          <Link to="/projects">Projects</Link>
+          <Link to="/contact">Contact</Link>
+        </nav>
 
       </div>
-
     </footer>
   );
 }

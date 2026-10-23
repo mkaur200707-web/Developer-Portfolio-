@@ -1,9 +1,9 @@
 
 import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [activeLink, setActiveLink] = useState('home');
 
   const links = [
     'Home',
@@ -13,30 +13,29 @@ function Navbar() {
     'Projects',
     'Certificates',
     'Resume',
-    'Contact'
+    'Contact',
+    'Settings'
   ];
 
   return (
     <header className="navbar">
-      <a href="#home" className="logo">
+      <NavLink to="/" className="logo">
         &lt;Dev<span>/&gt;</span>
-      </a>
+      </NavLink>
 
       <nav className={`nav-links ${menuOpen ? 'show' : ''}`}>
         {links.map((link) => (
-          <a
+          <NavLink
             key={link}
-            href={`#${link.toLowerCase()}`}
-            className={
-              activeLink === link.toLowerCase() ? 'active' : ''
+            to={link === 'Home' ? '/' : `/${link.toLowerCase()}`}
+            end
+            className={({ isActive }) =>
+              isActive ? 'active' : ''
             }
-            onClick={() => {
-              setActiveLink(link.toLowerCase());
-              setMenuOpen(false);
-            }}
+            onClick={() => setMenuOpen(false)}
           >
             {link}
-          </a>
+          </NavLink>
         ))}
       </nav>
 

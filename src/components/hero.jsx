@@ -1,51 +1,51 @@
 
 import { useState, useEffect } from 'react';
-
-const roles = [
-  'Frontend Developer',
-  'Web Designer',
-  'Java Programmer',
-  'Creative Developer'
-];
+import { Link } from 'react-router-dom';
 
 function Hero() {
+  const roles = [
+    'Frontend Developer',
+    'Web Designer',
+    'Java Programmer',
+    'Creative Developer'
+  ];
+
   const [roleIndex, setRoleIndex] = useState(0);
-  const [characterIndex, setCharacterIndex] = useState(0);
+  const [text, setText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
     const currentRole = roles[roleIndex];
 
-    let delay = isDeleting ? 50 : 100;
+    let speed = isDeleting ? 60 : 120;
 
-    if (!isDeleting && characterIndex === currentRole.length) {
-      delay = 1600;
+    if (!isDeleting && text === currentRole) {
+      speed = 1500;
     }
 
     const timer = setTimeout(() => {
-      if (!isDeleting) {
-        if (characterIndex < currentRole.length) {
-          setCharacterIndex(characterIndex + 1);
-        } else {
-          setIsDeleting(true);
-        }
+      if (!isDeleting && text === currentRole) {
+        setIsDeleting(true);
+      } else if (isDeleting && text === '') {
+        setIsDeleting(false);
+        setRoleIndex((prev) => (prev + 1) % roles.length);
       } else {
-        if (characterIndex > 0) {
-          setCharacterIndex(characterIndex - 1);
-        } else {
-          setIsDeleting(false);
-          setRoleIndex((roleIndex + 1) % roles.length);
-        }
+        setText(
+          currentRole.substring(
+            0,
+            text.length + (isDeleting ? -1 : 1)
+          )
+        );
       }
-    }, delay);
+    }, speed);
 
     return () => clearTimeout(timer);
-  }, [roleIndex, characterIndex, isDeleting]);
+  }, [text, isDeleting, roleIndex]);
 
   return (
     <section className="hero" id="home">
-      <div className="gradient-orb orb-one"></div>
-      <div className="gradient-orb orb-two"></div>
+      <div className="gradient-orb orb-1"></div>
+      <div className="gradient-orb orb-2"></div>
 
       <div className="hero-content">
         <p className="hello">HELLO, I'M</p>
@@ -56,34 +56,41 @@ function Hero() {
 
         <h2>
           I'm a{' '}
-          <span id="typingText">
-            {roles[roleIndex].substring(0, characterIndex)}
-          </span>
+          <span id="typingText">{text}</span>
           <span className="cursor">|</span>
         </h2>
 
         <p className="hero-description">
-          I create modern, responsive and user-friendly digital
-          experiences by combining creativity, clean design and technology.
+          I create modern, responsive and user-friendly
+          digital experiences by combining creativity,
+          clean design and technology.
         </p>
 
         <div className="hero-buttons">
-          <a href="#projects" className="btn primary-btn">
-            Explore My Work <span>→</span>
-          </a>
+          <Link to="/projects" className="btn primary-btn">
+            Explore My Work →
+          </Link>
 
-          <a href="#contact" className="btn secondary-btn">
+          <Link to="/contact" className="btn secondary-btn">
             Let's Connect
-          </a>
+          </Link>
         </div>
 
         <div className="social-area">
           <span>Find me on</span>
 
           <div className="social-links">
-            <a href="#">GH</a>
-            <a href="#">in</a>
-            <a href="#">@</a>
+            <a href="#" aria-label="GitHub">
+              GH
+            </a>
+
+            <a href="#" aria-label="LinkedIn">
+              in
+            </a>
+
+            <a href="#" aria-label="Email">
+              @
+            </a>
           </div>
         </div>
       </div>
@@ -92,13 +99,7 @@ function Hero() {
         <div className="profile-circle">
           <img
             src="https://img.magnific.com/premium-photo/indian-businesswoman-white-background-showing-left-side-with-her-right-hand_181624-58573.jpg?semt=ais_hybrid&w=740&q=80"
-            alt="Aanya Sharma"
-            style={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-              display: 'block'
-            }}
+            alt="Professional portfolio portrait"
           />
         </div>
       </div>
