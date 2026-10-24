@@ -6,15 +6,22 @@ function Footer() {
     <footer className="footer">
       <div className="footer-content">
 
-        <Link to="/" className="footer-logo">
-          &lt;Dev<span>/&gt;</span>
+        <Link
+          to="/"
+          className="footer-logo"
+          aria-label="Go to homepage"
+        >
+          ❋
         </Link>
 
         <p>
           © 2026 Aanya Sharma. All rights reserved.
         </p>
 
-        <nav className="footer-links" aria-label="Footer navigation">
+        <nav
+          className="footer-links"
+          aria-label="Footer navigation"
+        >
           <Link to="/">Home</Link>
           <Link to="/about">About</Link>
           <Link to="/projects">Projects</Link>
