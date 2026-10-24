@@ -1,4 +1,6 @@
 
+import { useState } from 'react';
+
 import {
   CodeXml,
   Palette,
@@ -9,44 +11,59 @@ import {
 } from 'lucide-react';
 
 function Skills() {
+  const [selectedCategory, setSelectedCategory] = useState('All');
+
+  const categories = [
+    'All',
+    'Web Development',
+    'Programming',
+    'Developer Tools',
+    'Core Skills'
+  ];
+
   const skills = [
     {
       name: 'HTML',
       icon: CodeXml,
-      description: 'Creating structured and semantic web pages.',
-      percentage: 90
+      category: 'Web Development',
+      description: 'Creating structured and semantic web pages.'
     },
     {
       name: 'CSS',
       icon: Palette,
-      description: 'Designing responsive and attractive interfaces.',
-      percentage: 85
+      category: 'Web Development',
+      description: 'Designing responsive and attractive interfaces.'
     },
     {
       name: 'JavaScript',
       icon: Braces,
-      description: 'Adding interactivity and dynamic functionality.',
-      percentage: 75
+      category: 'Web Development',
+      description: 'Adding interactivity and dynamic functionality.'
     },
     {
       name: 'Java',
       icon: Coffee,
-      description: 'Developing programming logic and applications.',
-      percentage: 80
+      category: 'Programming',
+      description: 'Developing programming logic and applications.'
     },
     {
       name: 'Git & GitHub',
       icon: GitBranch,
-      description: 'Managing code and collaborating on projects.',
-      percentage: 75
+      category: 'Developer Tools',
+      description: 'Managing code and collaborating on projects.'
     },
     {
       name: 'Problem Solving',
       icon: Target,
-      description: 'Developing logical thinking through coding.',
-      percentage: 80
+      category: 'Core Skills',
+      description: 'Developing logical thinking through coding.'
     }
   ];
+
+  const filteredSkills = skills.filter((skill) =>
+    selectedCategory === 'All' ||
+    skill.category === selectedCategory
+  );
 
   return (
     <section className="skills-section" id="skills">
@@ -58,12 +75,30 @@ function Skills() {
         <div className="heading-line"></div>
       </div>
 
+      {/* Category Filters */}
+      <div className="skills-filters">
+        {categories.map((category) => (
+          <button
+            key={category}
+            type="button"
+            className={`skill-filter-btn ${
+              selectedCategory === category ? 'active' : ''
+            }`}
+            onClick={() => setSelectedCategory(category)}
+            aria-pressed={selectedCategory === category}
+          >
+            {category}
+          </button>
+        ))}
+      </div>
+
+      {/* Skills Grid */}
       <div className="skills-grid">
-        {skills.map((skill) => {
+        {filteredSkills.map((skill) => {
           const Icon = skill.icon;
 
           return (
-            <div className="skill-card" key={skill.name}>
+            <article className="skill-card" key={skill.name}>
               <div className="skill-top">
                 <span className="skill-icon">
                   <Icon size={23} strokeWidth={1.5} />
@@ -74,25 +109,10 @@ function Skills() {
 
               <p>{skill.description}</p>
 
-              <div className="skill-progress-info">
-                <span>Proficiency</span>
-                <span>{skill.percentage}%</span>
-              </div>
-
-              <div
-                className="skill-bar"
-                role="progressbar"
-                aria-label={`${skill.name} proficiency`}
-                aria-valuenow={skill.percentage}
-                aria-valuemin={0}
-                aria-valuemax={100}
-              >
-                <div
-                  className="skill-progress"
-                  style={{ width: `${skill.percentage}%` }}
-                ></div>
-              </div>
-            </div>
+              <span className="skill-category-label">
+                {skill.category}
+              </span>
+            </article>
           );
         })}
       </div>

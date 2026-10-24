@@ -7,6 +7,7 @@ import About from './components/About';
 import Skills from './components/Skills';
 import Education from './components/Education';
 import Projects from './components/Projects';
+import Blog from './components/Blog';
 import Certificates from './components/Certificates';
 import Contact from './components/Contact';
 import Resume from './components/Resume';
@@ -83,6 +84,7 @@ function App() {
           <Route path="/skills" element={<Skills />} />
           <Route path="/education" element={<Education />} />
           <Route path="/projects" element={<Projects />} />
+          <Route path="/blog" element={<Blog />} />
           <Route path="/certificates" element={<Certificates />} />
           <Route path="/resume" element={<Resume />} />
           <Route path="/contact" element={<Contact />} />

@@ -1,9 +1,37 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
+import { Sun, Moon } from 'lucide-react';
+import { useTheme } from '../context/ThemeContext';
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { theme, setTheme } = useTheme();
+
+  const [systemDark, setSystemDark] = useState(
+    () => window.matchMedia('(prefers-color-scheme: dark)').matches
+  );
+
+  useEffect(() => {
+    const media = window.matchMedia('(prefers-color-scheme: dark)');
+
+    const updateSystemTheme = (event) => {
+      setSystemDark(event.matches);
+    };
+
+    media.addEventListener('change', updateSystemTheme);
+
+    return () => {
+      media.removeEventListener('change', updateSystemTheme);
+    };
+  }, []);
+
+  const isDark =
+    theme === 'dark' || (theme === 'system' && systemDark);
+
+  function toggleTheme() {
+    setTheme(isDark ? 'light' : 'dark');
+  }
 
   const links = [
     'Home',
@@ -11,6 +39,7 @@ function Navbar() {
     'Skills',
     'Education',
     'Projects',
+    'Blog',
     'Certificates',
     'Resume',
     'Contact',
@@ -19,8 +48,13 @@ function Navbar() {
 
   return (
     <header className="navbar">
-      <NavLink to="/" className="logo">
-        &lt;Dev<span>/&gt;</span>
+      <NavLink
+        to="/"
+        className="logo"
+        aria-label="Go to homepage"
+        onClick={() => setMenuOpen(false)}
+      >
+        ❋
       </NavLink>
 
       <nav className={`nav-links ${menuOpen ? 'show' : ''}`}>
@@ -37,6 +71,24 @@ function Navbar() {
             {link}
           </NavLink>
         ))}
+
+        <button
+          type="button"
+          className="theme-toggle-btn"
+          onClick={toggleTheme}
+          aria-label={
+            isDark ? 'Switch to light mode' : 'Switch to dark mode'
+          }
+          title={
+            isDark ? 'Switch to light mode' : 'Switch to dark mode'
+          }
+        >
+          {isDark ? (
+            <Sun size={18} strokeWidth={1.8} />
+          ) : (
+            <Moon size={18} strokeWidth={1.8} />
+          )}
+        </button>
       </nav>
 
       <button
